@@ -1,5 +1,10 @@
 <div class="container">
   <div class="row">
+    <app-users></app-users>
+  </div>
+  <hr />
+
+  <div class="row">
     <app-game-control (startEvent)="startEvent($event)"></app-game-control>
     <div class="col w-100">
       <div class="row">
@@ -9,17 +14,26 @@
     </div>
   </div>
   <hr />
+
   <div class="row">
-    <div class="result">
-      {{username}}
+    <div class="col result">
+      <label for="">Username:</label> {{username}}
     </div>
   </div>
   <div class="row">
-    <input [(ngModel)]="username" />
+    <div class="col">
+      
+      <input [(ngModel)]="username" />
+    </div>
   </div>
   <div class="row">
-    <button [disabled]="!username" (click)="username = username">Add username</button>
-    <button [disabled]="!username" (click)="username = ''">Reset</button>
+    <div class="col-md-4">
+      <button [disabled]="!username" (click)="username = username" type="button" class="btn btn-primary">Add
+        username</button>
+    </div>
+    <div class="col-md-4">
+      <button type="button" class="btn btn-primary" [disabled]="!username" (click)="username = ''">Reset</button>
+    </div>
   </div>
   <hr />
 
