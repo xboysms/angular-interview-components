@@ -1,0 +1,55 @@
+<div class="container">
+    <form [formGroup]="inputForm" (ngSubmit)="onSubmit()">
+        <div class="row">
+            <div class="col">
+                <mat-form-field class="example-form-field">
+                    <mat-label>Password</mat-label>
+                    <input matInput id="password" name="password" type="password" class="form-control"
+                        formControlName="password" />
+                </mat-form-field>
+
+                <div *ngIf="isSubmited && inputForm.controls.password.invalid && (inputForm.controls.password.dirty || inputForm.controls.password.touched)"
+                    class="alert alert-danger">
+                    <mat-error *ngIf="inputForm.controls.password.errors?.['required']">Password is
+                        required.</mat-error>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <mat-form-field class="example-form-field">
+                    <mat-label>Email</mat-label>
+                    <input matInput type="text" formControlName="email" />
+                </mat-form-field>
+                <div *ngIf="isSubmited && inputForm.controls.email.invalid && (inputForm.controls.email.dirty || inputForm.controls.email.touched)"
+                    class="alert alert-danger">
+                    <mat-error *ngIf="inputForm.controls.email.errors?.['required']">Email is required.</mat-error>
+                    <mat-error *ngIf="inputForm.controls.email.errors?.['email']">Email is invalid.</mat-error>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col h-100">
+                <mat-form-field>
+                    <mat-select formControlName="level">
+                        <mat-option value="basic">Basic</mat-option>
+                        <mat-option value="advanced">Advanced</mat-option>
+                        <mat-option value="pro">Pro</mat-option>
+                    </mat-select>
+                    <!-- <mat-hint>Errors appear instantly!</mat-hint>
+                    <mat-error *ngIf="level.hasError('required')">You must make a selection</mat-error>
+                    <mat-error *ngIf="selected.hasError('pattern') && !selected.hasError('required')">
+                        Your selection is invalid
+                    </mat-error> -->
+                </mat-form-field>
+            </div>
+        </div>
+
+        <div class="row control-container">
+            <div class="col">
+                <button type="submit" mat-button color="primary">Submit</button>
+            </div>
+        </div>
+    </form>
+</div>
